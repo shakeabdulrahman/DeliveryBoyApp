@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DeliveryBoyApp.MainPage">
+
+    <Grid>
+        <StackLayout VerticalOptions="CenterAndExpand" Margin="25" >
+            <Label Text="Login" HorizontalOptions="CenterAndExpand"/>
+            <Entry x:Name="emailentry" Placeholder="Enter your Email" Keyboard="Email" Text="{Binding Email, Mode=TwoWay}"/>
+            <Entry x:Name="passwordentry" Placeholder="Enter your Password" IsPassword="True" Text="{Binding Password, Mode=TwoWay}"/>
+            <Button x:Name="loginbutton" Text="Login" CornerRadius="10" Margin="0,0,0,10" Command="{Binding LoginCommand}" CommandParameter="{Binding User}"/>
+            <Label x:Name="forgot" Text="Forgot password?" HorizontalOptions="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="gotoforget" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label x:Name="create" Text="Create a new account!" HorizontalOptions="End"  TextDecorations="Underline" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RegisterNavigationCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
+        <ActivityIndicator x:Name="activityindicator" Margin="0,10,0,0" VerticalOptions="Center" HorizontalOptions="Center" 
+                                IsVisible="false" IsRunning="False" />
+    </Grid>
+</ContentPage>

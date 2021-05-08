@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:DeliveryBoyApp.ViewModel.Converter"
+             x:Class="DeliveryBoyApp.Views.History">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:DateTimeToStringConverter x:Key="converter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ListView x:Name="Listview"
+              ItemsSource="{Binding infos}"
+              IsPullToRefreshEnabled="True"
+              Refreshing="listview_refresh">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Experience}"
+                          Detail="{Binding createdAt, Converter={StaticResource converter}}">
+                    <TextCell.ContextActions>
+                        <MenuItem Text="Delete"
+                                  Clicked="menu_itemClicked"
+                                  CommandParameter="{Binding}"/>
+                    </TextCell.ContextActions>
+                </TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DeliveryBoyApp.Views.RegisterPage">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout x:Name="containerStacklayout" VerticalOptions="CenterAndExpand" Margin="25">
+                <Label Text="Login" HorizontalOptions="CenterAndExpand"/>
+                <Entry x:Name="emailentry" Text="{Binding Email,Mode=TwoWay}" Placeholder="Enter your Email" Keyboard="Email"/>
+                <Entry x:Name="passwordentry" Text="{Binding Password,Mode=TwoWay}" Placeholder="Enter your Password" IsPassword="True"/>
+                <Entry x:Name="confirmpasswordentry" Text="{Binding ConfirmPassword,Mode=TwoWay}" Placeholder="Enter your Password agian" IsPassword="True" />
+                <Button x:Name="Registerbutton" Text="Register" CornerRadius="10" Margin="0,0,0,10" Command="{Binding RegisterCommand}" CommandParameter="{Binding User}"/>
+            </StackLayout>
+
+            <ActivityIndicator x:Name="activityindicator2" IsVisible="false" IsRunning="False"
+                               HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

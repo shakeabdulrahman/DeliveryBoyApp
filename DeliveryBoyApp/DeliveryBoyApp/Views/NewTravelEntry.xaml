@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DeliveryBoyApp.Views.NewTravelEntry">
+    <ContentPage.Content>
+        <StackLayout x:Name="ContainerStacklayout" Margin="20">
+            <Label Text="New Travel Entry" TextTransform="Uppercase" HorizontalOptions="Center" />
+            <Entry x:Name="ExperienceEntry" Text="{Binding Experience,Mode=TwoWay}" Placeholder="Enter new travel entry" />
+            <Button x:Name="Addbutton" Text="Save" Command="{Binding PostCommand}" CommandParameter="{Binding Info}" />
+
+            <ListView x:Name="listviewplaces" 
+                      SelectedItem="{Binding Venuee, Mode=TwoWay}"
+                      HorizontalOptions="FillAndExpand"
+                      Margin="20,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding name}" FontAttributes="Bold"/>
+                                <Label Grid.Row="1" Text="{Binding location.address}" TextColor="SkyBlue"/>
+                                <Label Grid.Column="1" Text="{Binding location.distance, StringFormat='{0} meters'}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
